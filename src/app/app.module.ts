@@ -5,13 +5,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
-import { HeaderComponent } from './components/header/header.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { HomeComponent } from './pages/home/home.component';
+import { ProductsHeaderComponent } from './components/products-header/products-header.component';
+import { FiltersComponent } from './components/filters/filters.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+import { CartComponent } from './pages/cart/cart.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomeComponent,
+    ProductsHeaderComponent,
+    FiltersComponent,
+    ProductCardComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
