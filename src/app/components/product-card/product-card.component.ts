@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Product } from 'src/app/interfaces/interfaces';
 
 @Component({
   selector: 'app-product-card',
@@ -8,5 +9,17 @@ import { Component, Input } from '@angular/core';
 export class ProductCardComponent {
 
   @Input() widthCol = false
+  product: Product = {
+    id: 1,
+    title: "Jacket",
+    price: 5000,
+    category: "Clothing",
+    description: "lorem ipsum",
+    image: 'http://via.placeholder.com/150'
+  }
+  
 
+  add(){
+
+  }
 }

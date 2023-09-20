@@ -39,11 +39,15 @@ export class CartComponent implements OnInit{
     'action'
   ]
 
-  getTotal(items: CartItem[]){
+  getTotal(){
     return this.data.map( (item) => item.price * item.quantity ).reduce((prev, current) => prev + current, 0)
   }
 
   clear(){
     this.data = []
+  }
+
+  delete(id: number){
+    this.data = this.data.filter( (a) => {a.id === id} )
   }
 }
