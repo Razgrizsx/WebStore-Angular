@@ -3,11 +3,11 @@
         <app-filters (filterCategory)="updateCategory($event)"></app-filters>
     </mat-drawer>
     <mat-drawer-content class="p-6">
-        <app-products-header (colCount)="updateCols($event)"></app-products-header>
+        <app-products-header (colCount)="updateCols($event)" (sorting)="sorting($event)"></app-products-header>
         <mat-grid-list gutterSize="16" [cols]="cols" [rowHeight]="rowHeight">
             
-            <mat-grid-tile>
-                <app-product-card (add)="addCart($event)" class="w-full h-full" [widthCol]="cols === 1"></app-product-card>
+            <mat-grid-tile *ngFor="let item of filtered">
+                <app-product-card [item]="item" (add)="addCart($event)" class="w-full h-full" [widthCol]="cols === 1"></app-product-card>
             </mat-grid-tile>
             
         </mat-grid-list>

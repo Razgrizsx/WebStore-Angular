@@ -5,13 +5,13 @@
                 src="https://via.placeholder.com/150">
         <div class="w-full" [ngClass]="{'px-8 flex flex-col justify-between' : widthCol, 'pt-2': widthCol}">
             <div>
-                <h5>Clothing</h5>
-                <p class="truncate hover:whitespace-normal">Jacket</p>
+                <h5>{{item.category}}</h5>
+                <p class="truncate hover:whitespace-normal">{{item.title}}</p>
                 <p *ngIf="widthCol">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
             </div>
             <div class="flex justify-between">
                 <span class="text-red-300">
-                    {{'150' | currency}}
+                    {{item.price | currency}}
                 </span>
                 <button (click)="addCart()">
                     <mat-icon class="text-gray-700">shopping_cart</mat-icon>

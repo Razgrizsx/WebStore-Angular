@@ -9,18 +9,12 @@ import { Product } from 'src/app/interfaces/interfaces';
 export class ProductCardComponent {
 
   @Input() widthCol = false
-  product: Product = {
-    id: 1,
-    title: "Jacket",
-    price: 5000,
-    category: "Clothing",
-    description: "lorem ipsum",
-    image: 'http://via.placeholder.com/150'
-  }
+  @Input() item!: Product
   @Output() add = new EventEmitter()
   
 
   addCart(){
-    this.add.emit(this.product)
+    console.log(this.item)
+    this.add.emit(this.item)
   }
 }

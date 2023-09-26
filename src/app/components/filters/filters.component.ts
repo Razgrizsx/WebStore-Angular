@@ -9,7 +9,7 @@ export class FiltersComponent {
 
   @Output() filterCategory = new EventEmitter()
 
-  categories : string[] = ['Clothes', 'Technology']
+  categories : string[] = ['All','Clothing', 'Technology']
 
   updateCategory(category: string){
     this.filterCategory.emit(category)

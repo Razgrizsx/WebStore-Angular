@@ -16,7 +16,6 @@ export class CartService {
     const items = [...this.cart.value.items]
 
     const itemCart = items.find((_item) => _item.id === item.id)
-
     if(itemCart){
       itemCart.quantity += 1 
     }else{
@@ -25,6 +24,30 @@ export class CartService {
 
     this.cart.next({items})
     this._snackBar.open("Item added to cart", 'Ok', {duration: 3000})
-    console.log(this.cart.value)
+  }
+
+  getTotal(items: Array<CartItem>): number{
+    return items.map( (item) => item.price * item.quantity ).reduce((prev, current) => prev + current, 0)
+  }
+
+  clearCart(){
+    this.cart.next({items : []})
+    this._snackBar.open('Cart is Cleared', "Ok", {duration: 3000})
+  }
+
+  deleteItem(id: number): void{
+    const items = [...this.cart.value.items]
+    const itemCart = items.filter((item) => item.id !== id) 
+     return this.cart.next({items: itemCart})
+  }
+  reduceItem(id: number): void{
+    const items = [...this.cart.value.items]
+    const itemCart = items.find(e => e.id === id)
+    
+    if(itemCart){
+      if(itemCart.quantity === 1){
+        this.deleteItem(itemCart.id)
+      }else{itemCart.quantity -= 1}
+      }
   }
 }

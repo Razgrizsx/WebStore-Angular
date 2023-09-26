@@ -8,6 +8,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class ProductsHeaderComponent {
 
   @Output() colCount = new EventEmitter()
+  @Output() sorting = new EventEmitter()
 
   type :string = 'type'
   itemsCount : number = 10
@@ -15,7 +16,7 @@ export class ProductsHeaderComponent {
 
   onSort(type: string){
     this.type = type
-    console.log(this.type)
+    this.sorting.emit(this.type)
   }
 
   updateItems(num : number){
