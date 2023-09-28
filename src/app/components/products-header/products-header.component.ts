@@ -9,9 +9,10 @@ export class ProductsHeaderComponent {
 
   @Output() colCount = new EventEmitter()
   @Output() sorting = new EventEmitter()
+  @Output() itemCount = new EventEmitter()
 
   type :string = 'type'
-  itemsCount : number = 10
+  itemsCount : number = 20
 
 
   onSort(type: string){
@@ -21,6 +22,7 @@ export class ProductsHeaderComponent {
 
   updateItems(num : number){
     this.itemsCount = num
+    this.itemCount.emit(this.itemsCount)
   }
 
   updateCols(cols: number){

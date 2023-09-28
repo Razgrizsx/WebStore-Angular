@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { CartItem, Product } from 'src/app/interfaces/interfaces';
+import { ApiService } from 'src/app/services/api.service';
 import { CartService } from 'src/app/services/cart.service';
 
 const height: {[id:number]: number} = {
@@ -13,37 +15,18 @@ const height: {[id:number]: number} = {
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit, OnDestroy{
 
-  constructor(private cartService : CartService,){}
+  constructor(private cartService : CartService, private apiService : ApiService){}
 
-  
+  ngOnInit(): void {
+   this.subscription = this.apiService.getProducts().subscribe((prod) => {this.products = prod, this.filtered = prod})
+   console.log(this.products)
+  }
 
-  products: Product[] = [{
-    id: 1,
-    title: "Jacket",
-    price: 5000,
-    category: "Clothing",
-    description: "lorem ipsum",
-    image: 'http://via.placeholder.com/150'
-  },
-    {
-      id: 2,
-    title: "Socks",
-    price: 800,
-    category: "Clothing",
-    description: "lorem ipsum",
-    image: 'http://via.placeholder.com/150'
-    },
-    {
-      id: 3,
-      title: "Pc",
-      price: 12000,
-      category: "Technology",
-      description: "lorem ipsum",
-      image: 'http://via.placeholder.com/150'
-    },
-  ]
+  subscription! : Subscription
+
+  products: Product[] = []
 
   cols: number = 3
   category: string = 'All'
@@ -71,6 +54,11 @@ export class HomeComponent {
     console.log(this.filtered)
 }
     
+
+  itemCount(event: number){
+      this.filtered = this.products.slice(0, event)
+      console.log(this.filtered)
+}
   
 
   addCart(product: Product): void{
@@ -81,5 +69,12 @@ export class HomeComponent {
       quantity: 1,
       id: product.id
     })
+  }
+
+  ngOnDestroy(): void {
+    if(this.subscription){
+      this.subscription.unsubscribe()
+    }
+    
   }
 }

@@ -3,7 +3,7 @@
         <app-filters (filterCategory)="updateCategory($event)"></app-filters>
     </mat-drawer>
     <mat-drawer-content class="p-6">
-        <app-products-header (colCount)="updateCols($event)" (sorting)="sorting($event)"></app-products-header>
+        <app-products-header (colCount)="updateCols($event)" (sorting)="sorting($event)" (itemCount)="itemCount($event)"></app-products-header>
         <mat-grid-list gutterSize="16" [cols]="cols" [rowHeight]="rowHeight">
             
             <mat-grid-tile *ngFor="let item of filtered">

@@ -48,7 +48,9 @@
             <td mat-cell *matCellDef="let element">
                 <button mat-mini-fab color="warn" class="float-right" (click)="delete(element.id)"><mat-icon>close</mat-icon></button>
             </td>
-            <td mat-footer-cell *matFooterCellDef=""><button class="float-right" mat-raised-button color="primary">Buy</button></td>
+            <td mat-footer-cell *matFooterCellDef="">
+                <button (click)="checkout()" class="float-right" mat-raised-button color="primary">Buy</button>
+            </td>
         </ng-container>
 
 

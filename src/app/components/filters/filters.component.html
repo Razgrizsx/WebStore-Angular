@@ -3,6 +3,9 @@
         <mat-panel-title>Categories</mat-panel-title>
     </mat-expansion-panel-header>
     <mat-selection-list [multiple]="false">
+        <mat-list-option value="All" (click)="updateCategory('All')">
+            <button >All</button>
+        </mat-list-option>
         <mat-list-option *ngFor="let category of categories" [value]="category" (click)="updateCategory(category)">
             <button >{{category}}</button>
         </mat-list-option>

@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Cart, CartItem } from '../interfaces/interfaces';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,7 @@ export class CartService {
 
   cart = new BehaviorSubject<Cart>({items: []})
 
-  constructor(private _snackBar : MatSnackBar) { }
+  constructor(private _snackBar : MatSnackBar, private http: HttpClient) { }
 
   addCart(item: CartItem): void {
     const items = [...this.cart.value.items]

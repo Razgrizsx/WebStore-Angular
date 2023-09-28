@@ -1,13 +1,13 @@
 <mat-card class="p-2" [ngClass]="{'text-center': !widthCol, 'h-full': widthCol, 'p-0': widthCol}">
     <div  [ngClass]="{'flex': widthCol, 'h-full': widthCol}">
-        <img class="mx-auto h-full" 
+        <img class="mx-auto w-[150px] h-[150px]" 
                 [ngClass]="{'h-[180px]': !widthCol, 'h-[360px]': widthCol}" 
-                src="https://via.placeholder.com/150">
+                [src]="item.image">
         <div class="w-full" [ngClass]="{'px-8 flex flex-col justify-between' : widthCol, 'pt-2': widthCol}">
             <div>
                 <h5>{{item.category}}</h5>
                 <p class="truncate hover:whitespace-normal">{{item.title}}</p>
-                <p *ngIf="widthCol">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                <p *ngIf="widthCol">{{item.description}}</p>
             </div>
             <div class="flex justify-between">
                 <span class="text-red-300">
