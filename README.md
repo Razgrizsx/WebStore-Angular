@@ -1,5 +1,7 @@
 # WebStore
 
+![webapp](https://github.com/Razgrizsx/WebStore-Angular/assets/104910559/7ab93653-6ecf-4beb-9f96-0d6e9b5fc840)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
 
 ## Development server
